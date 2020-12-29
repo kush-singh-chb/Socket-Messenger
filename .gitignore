@@ -1,0 +1,5 @@
+.vscode
+server/node_modules/*
+whatsapp-client/node_modules/*
+whatsapp-client/debug.log
+whatsapp-client/.eslintcache
