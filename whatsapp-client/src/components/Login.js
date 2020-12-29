@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid"
 import "./Login.scss";
@@ -10,9 +10,9 @@ function Login({ onIdSubmit }) {
 
   }
   const createNewId = () => {
-    onIdSubmit(uuidv4())
+    onIdSubmit(idRef.current.value)
   }
-  const idRef = useRef();
+  const idRef = React.createRef();
   return (
     <Container
       className="align-items-center d-flex"

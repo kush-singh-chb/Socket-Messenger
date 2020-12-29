@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Button, Form, InputGroup } from "react-bootstrap"
 import { useConversations } from '../context/ConverstationProvider'
 
@@ -13,8 +13,10 @@ export default function OpenConversation() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        sendMessage(selectedConversation.recipients.map(r => r.id), text)
-        setText('')
+        if (e.code === 'Enter') {
+            sendMessage(selectedConversation.recipients.map(r => r.id), text)
+            setText('')
+        }
     }
 
     return (
@@ -44,6 +46,7 @@ export default function OpenConversation() {
                             as="textarea"
                             required
                             value={text}
+                            onKeyUp={handleSubmit}
                             onChange={(e) => setText(e.target.value)}
                             style={{ height: "75px", resize: "none " }} />
                         <InputGroup.Append>
